@@ -48,9 +48,9 @@ export default function Navbar() {
               <button className="btn btn-info mx-2" type="submit">
                 Search
               </button>
-              <button className="btn btn-black" type="submit">
+              <Link className="btn btn-black text-white" type="submit" to={"/login"}>
                 Login
-              </button>
+              </Link>
             </form>
           </div>
         </div>
