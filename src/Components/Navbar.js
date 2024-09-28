@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ isLogged }) {
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-black">
@@ -23,18 +23,26 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active text-white" aria-current="page" href="#">
+                <a
+                  className="nav-link active text-white"
+                  aria-current="page"
+                  href="#"
+                >
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" href="#errorVault" to={"/errorVault"}>
+                <Link
+                  className="nav-link text-white"
+                  href="#errorVault"
+                  to={isLogged ? "/errorVault" : "/"}
+                >
                   ErrorVault
                 </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link text-white" href="#devNotes">
-                DevNotes
+                  DevNotes
                 </a>
               </li>
             </ul>
@@ -48,9 +56,15 @@ export default function Navbar() {
               <button className="btn btn-info mx-2" type="submit">
                 Search
               </button>
-              <Link className="btn btn-black text-white" type="submit" to={"/login"}>
+              {
+                !isLogged && <Link
+                className="btn btn-black text-white"
+                type="submit"
+                to={"/login"}
+              >
                 Login
               </Link>
+              }
             </form>
           </div>
         </div>

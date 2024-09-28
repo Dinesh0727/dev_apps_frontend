@@ -1,0 +1,15 @@
+.error-title-view{
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid grey;
+    background-color: lightgrey;
+}
+
+.beforeFixText{
+    background-color: lightgrey;
+    padding: 1rem;
+}
+
+.jodit-status-bar{
+    visibility: hiddene;
+}

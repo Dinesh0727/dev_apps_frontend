@@ -1,17 +1,46 @@
-import React from 'react'
+import React from "react";
+import {
+  Card,
+  CardBody,
+  Heading,
+  Text,
+  CardFooter,
+  Button,
+  CardHeader,
+} from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
+import Label from "./Label";
 
-export default function CardLocal({title, body, subtitle}) {
+export default function CardLocal({ title, body, subtitle, labels }) {
   return (
     <div>
-        <div className="card" style={{width: "16rem", margin: "0 2rem 0 0"}}>
-            <div className="card-body">
-              <h5 className="card-title">{title}</h5>
-              <h6 className="card-subtitle mb-2 text-muted">{subtitle}</h6>
-              <p className="card-text card-text-local">
-                {body}
-              </p>
-            </div>
-          </div>
+      <Card
+        className="card-local"
+        direction={{ base: "column", sm: "row" }}
+        overflow="hidden"
+        variant="outline"
+        borderRadius={"10px"}
+      >
+        <Stack>
+          <CardHeader>
+            <Text fontWeight={500} fontSize={"1.5rem"}>
+              {title}
+            </Text>
+          </CardHeader>
+          <CardBody>
+            <Text py="2">{subtitle}</Text>
+            <Text>{body}</Text>
+          </CardBody>
+
+          <CardFooter>
+            <Text>
+              {Object.values(labels).map((x) => {
+                return <Label text={x}></Label>;
+              })}
+            </Text>
+          </CardFooter>
+        </Stack>
+      </Card>
     </div>
-  )
+  );
 }

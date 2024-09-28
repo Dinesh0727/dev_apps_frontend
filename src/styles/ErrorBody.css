@@ -1,0 +1,279 @@
+.main-container {
+  background-color: black;
+  color: beige;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: black;
+}
+
+.fancy {
+  border: 2px red solid;
+  margin: 1.5rem;
+  border-radius: 1rem;
+  background-color: #cececf;
+  opacity: 0.9;
+}
+
+.error-title {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
+.error-title-text {
+  margin: 1rem 0 0 3rem;
+}
+
+.error-title-input {
+  padding: 0.3rem;
+  margin: 1rem 0 2rem 3rem;
+}
+
+.project-title {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
+.project-title-text {
+  margin: 0 0 0 3rem;
+}
+
+.project-title-input {
+  padding: 0.3rem;
+  margin: 1rem 0 2rem 3rem;
+}
+
+.problem-description {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
+.problem-description-text {
+  margin: 0 0 0 3rem;
+}
+
+.problem-description-textarea {
+  padding: 1rem;
+  margin: 1rem 0 2rem 3rem;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.solution-description {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
+.solution-description-text {
+  margin: 0 0 0 3rem;
+}
+
+.solution-description-textarea {
+  padding: 1rem;
+  margin: 1rem 0 2rem 3rem;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.code-blocks {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+}
+
+.before-fix {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.before-fix-label {
+  margin: 1rem 0 0 3.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.before-fix-textarea {
+  width: 29rem;
+  padding: 0.3rem;
+  margin: 1rem 0 2rem 3rem;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.after-fix {
+  display: flex;
+  flex-direction: column;
+  width: 31rem;
+}
+
+.after-fix-label {
+  margin: 1rem 0 0 3.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.after-fix-textarea {
+  width: 29rem;
+  padding: 0.3rem;
+  margin: 1rem 0 2rem 3rem;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.imageLinkList {
+  margin: 1rem 0 0 3rem;
+}
+
+.image-link-list-label {
+}
+
+.image-link-list-input-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0 2rem 0;
+  width: 100%;
+}
+
+.image-link-list-link-input {
+  padding: 0.3rem;
+  margin: 0 3rem 0 0;
+  width: 35%;
+}
+
+.image-link-list-name-input {
+  padding: 0.3rem;
+  margin: 0 3rem 0 0;
+  width: 35%;
+}
+
+.image-link-container {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.7s ease;
+  padding: 1rem;
+  color: black;
+  margin: 0 5rem 3rem 0;
+  max-height: 20rem;
+  overflow-y: scroll;
+  align-items: center;
+}
+
+.image-link-entry {
+  background-color: aquamarine;
+  color: black;
+  padding: 0.5rem;
+  margin: 0 1rem 0 0;
+}
+
+.referenceLinkList {
+  margin: 1rem 0 0 3rem;
+}
+
+.reference-link-list-label {
+}
+
+.reference-link-list-input-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0 2rem 0;
+  width: 100%;
+}
+
+.reference-link-list-link-input {
+  padding: 0.3rem;
+  margin: 0 3rem 0 0;
+  width: 65%;
+}
+
+.reference-link-list-name-input {
+  padding: 0.3rem;
+  margin: 0 3rem 0 0;
+  width: 35%;
+}
+
+.reference-link-container {
+  background-color: white;
+  color: black;
+  margin: 0 5rem 0 0;
+  max-height: 20rem;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.reference-link-entry {
+  background-color: aquamarine;
+  color: black;
+  padding: 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
+  cursor: pointer;
+}
+
+.labels {
+  margin: 0 0 0 3rem;
+}
+
+.label-list-label {
+}
+
+.label-list-input-container {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0 2rem 0;
+  width: 100%;
+}
+
+.label-list-link-input {
+  padding: 0.3rem;
+  margin: 0 3rem 0 0;
+  width: 65%;
+}
+
+.label-container {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.7s ease;
+  padding: 1rem;
+  color: black;
+  margin: 0 5rem 3rem 0;
+  max-height: 20rem;
+  overflow-y: scroll;
+  align-items: center;
+}
+
+.label-entry {
+  background-color: aquamarine;
+  color: black;
+  padding: 0.5rem;
+  margin: 0 1rem 0.5rem 0;
+}
+
+.reference-link-list-name-input {
+  padding: 0.3rem;
+  margin: 0 3rem 0 0;
+  width: 35%;
+}
+
+.reference-link-container {
+  background-color: white;
+  padding: 1rem;
+  color: black;
+  margin: 0 5rem 5rem 0;
+  max-height: 20rem;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.reference-link-entry {
+  background-color: aquamarine;
+  color: black;
+  padding: 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
+  cursor: pointer;
+}
