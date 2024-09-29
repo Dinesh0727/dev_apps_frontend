@@ -1,4 +1,4 @@
-import '../styles/ErrorBody.css';
+import "../styles/ErrorBody.css";
 import { IconButton, Input, Textarea, Link } from "@chakra-ui/react";
 import { useState, React, useEffect } from "react";
 import { IoExpand } from "react-icons/io5";
@@ -78,7 +78,6 @@ export default function ErrorBody({ errorFile }) {
     errorFile.afterFixText = afterFixText;
     console.log(errorFile.beforeFixText);
     console.log(errorFile.afterFixText);
-    
   }
 
   return (
@@ -102,7 +101,7 @@ export default function ErrorBody({ errorFile }) {
             placeholder="Enter the Project title"
             value={errorFile.projectTitle}
             onChange={(event) => {
-                errorFile.projectTitle = event.target.value;
+              errorFile.projectTitle = event.target.value;
             }}
           ></Input>
         </div>
@@ -116,7 +115,7 @@ export default function ErrorBody({ errorFile }) {
             value={errorFile.problemText}
             onChange={(event) => {
               errorFile.problemText = event.target.value;
-          }}
+            }}
           ></Textarea>
         </div>
         <div className="solution-description">
@@ -151,6 +150,7 @@ export default function ErrorBody({ errorFile }) {
             </div>
             <div className="before-fix-textarea">
               <Editor
+                readOnly={false}
                 value={beforeFixText}
                 toolBarVisibility={false}
                 setValue={setBeforeFixText}
@@ -170,6 +170,7 @@ export default function ErrorBody({ errorFile }) {
             </div>
             <div className="after-fix-textarea">
               <Editor
+                readOnly={false}
                 value={afterFixText}
                 toolBarVisibility={false}
                 setValue={setAfterFixText}

@@ -6,18 +6,19 @@ export default function Editor({
   placeholdery,
   setValue,
   value,
-  toolBarVisibility
+  toolBarVisibility,
+  readOnly
 }) {
   const editor = useRef(null);
   const [content, setContent] = useState(value);
 
-    // console.log("The content in the form of string: " + content);
+  // console.log("The content in the form of string: " + content);
 
   const config = useMemo(
     () => ({
       innerHeight: "400rem",
       toolbar: toolBarVisibility,
-      readonly: false,
+      readonly: readOnly,
       placeholder: placeholdery || "Start typings...",
       buttons: [
         "bold",
@@ -62,19 +63,19 @@ export default function Editor({
 
   return (
     <JoditEditor
+      disabled={true}
       ref={editor}
       value={value}
       config={config}
       tabIndex={1}
-      onBlur={(newContent) =>  {
+      onBlur={(newContent) => {
         console.log("Value before update");
-        
+
         setContent(newContent);
         setValue(newContent);
 
         console.log(value);
-        
-      }} 
+      }}
     />
   );
 }
