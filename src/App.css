@@ -1,0 +1,277 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+input::placeholder{
+  padding-left: 5%;
+}
+
+.errorVault{
+  background-image: url("https://media.istockphoto.com/photos/open-bank-vault-3d-render-picture-id179260988?k=6&m=179260988&s=612x612&w=0&h=VL8v93wAaKctMS0S7jM_GU9_AafoE-rM8xrirWQX26U=");
+  background-repeat: no-repeat;
+  background-color: black;
+  
+  display: flex;
+  justify-content: flex-end;
+  min-height: 100vh;
+}
+
+.errorVault_text{
+  width: 50%;
+  padding: 10% 15% 0 10%;
+}
+
+.errorVault_text_heading{
+  text-align: left;
+}
+
+.devNotes {
+  position: relative;
+  height: 50rem;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  background-image: url("https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+}
+
+.devNotes_text {
+  margin: 20% 0 5% 7%;
+  width: 40%;
+  z-index: 2;
+  color: white;
+}
+
+.devNotes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.9) 50%);
+}
+
+ul{
+  list-style-type: none;
+}
+
+
+.footer_text{
+  padding: 2% 10% 1% 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.social-icons{
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+}
+
+.insta{
+  background-color: white;
+  color: #E75480;
+}
+
+.EVP_Navbar{
+  background-color: #212529;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-between;
+  padding-bottom: 1%;
+  position: sticky;
+  top: 0;
+}
+
+.EVP_Navbar_logo{
+  font-size: large;
+  text-decoration: none;
+  color: black;
+  padding: 0 0 0 1%;
+}
+
+.EVP_Navbar_form{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 0.7% 0 0 0;
+  width: 50%;
+}
+
+.EVP_Navbar_searchbar{
+  margin: 0% 4% 0 0;
+  width: 60%;
+}
+
+.EVP_Navbar_searchButton{
+  margin: 0 3% 0 0;
+}
+
+.EVP_Navbar_profile{
+  margin: 1%;
+  cursor: pointer;
+}
+
+
+.sidebar {
+  width: 20%;
+  height: calc(100vh - 70px); /* Adjust this value to match the height of your header */
+  position: fixed;
+  top: 70px; /* Adjust this value to match the height of your header */
+  left: 0;
+  background-color: #343a40;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: width 0.7s;
+  /* z-index: 0; */
+}
+
+.sidebar.collapsed {
+  width: 7%;
+}
+
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar.collapsed .nav-link span {
+  display: none;
+}
+
+.EVP_Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.EVP_Navbar_logo {
+  font-size: 1.5rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.EVP_Navbar_form {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-btn {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.errorVault_logo_link{
+  text-decoration: none;
+}
+
+.errorVault_page_body{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* background-color: #E75480; */
+  /* z-index: 0; */
+}
+
+
+.card-container{
+  margin: 3% 1% 0 23%;
+  width: 80%;
+  transition: width 0.3s;
+  transition: margin 0.7s;
+  
+  /* z-index: 0; */
+}
+
+.card-container.collapsed{
+  width: 93%;
+  margin: 3% 0 0 10%;
+}
+
+
+.card-container-flexbox{
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.7s ease;
+  /* z-index: 0; */
+}
+
+/* .card-item{
+  cursor: pointer;
+} */
+
+.cardContainerSearchBar > input{
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  height: 3rem;
+  width: 70%;
+}
+
+
+.card-local{
+  margin: 1rem;
+  padding: 1rem;
+  background-color: lightgrey;
+  cursor: pointer;
+  transition: transform 0.7s ease;
+}
+
+.label{
+  background-color: #61dafb;
+  margin-right: 5px;
+  border-radius: 25px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.label a{
+  text-decoration: none;
+  color: black;
+}
+
+.create_error_button{
+  z-index: 2;
+}

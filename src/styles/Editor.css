@@ -1,0 +1,24 @@
+/* Custom styles for code block */
+.jodit-wysiwyg pre {
+    background-color: #f4f4f4; /* Light gray background */
+    border: 1px solid #ddd;    /* Border around the code block */
+    padding: 10px;             /* Padding inside the code block */
+    border-radius: 5px;        /* Rounded corners */
+    overflow-x: auto;          /* Horizontal scroll if the code is too wide */
+}
+
+.jodit-wysiwyg pre code {
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+    font-size: 14px;                                /* Font size */
+    color: #333;                                    /* Text color */
+}
+
+.jodit-wysiwyg{
+    overflow-y: scroll;
+    min-height: 15rem;
+    max-height: 20rem;
+}
+
+.jodit-workplace{
+    overflow-x: scroll;
+}
