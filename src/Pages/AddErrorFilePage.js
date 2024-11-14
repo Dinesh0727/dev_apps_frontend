@@ -171,17 +171,25 @@ export default function AddErrorFilePage() {
     console.log("Sending data:", errorFileData);  // Log the data being sent
   
     try {
-      const temp = await axios.post(
+      const response = await axios.post(
         "http://localhost:8080/errors/createErrorFile",
         errorFileData,
         { headers: { "Content-Type": "application/json" } }
       );
-      console.log("Response:", temp.data);
+      console.log("Response:", response.data);
+      if (response.data) {
+        viewErrorCard(response.data);
+      }
     } catch (error) {
       console.error("Error creating error file:", error);
     }
   };
   
+  const viewErrorCard = (id) => {
+
+    // Navigate to the viewErrorFile route, passing the document ID as state
+    navigate("/viewErrorFile", { state: id });
+  };
 
   return (
     <div>

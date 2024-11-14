@@ -112,24 +112,34 @@
     margin: 1rem 2rem 1rem 0;
 }
 
-.labels-view-heading{
+.labels-view-heading {
     margin: 2rem 0 1rem 3rem;
 }
 
-.labels-view-content{
+.labels-view-content {
     width: 80%;
     background-color: lightgrey;
-    padding: 2rem;
-    margin: 2rem 0 1rem 3rem;
+    padding: 1rem;
+    margin: 1rem 1rem 1rem 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.75rem; /* Rounded corners for a cleaner look */
 }
 
-.labels-view-text{
+.labels-view-element {
     background-color: gold;
     color: black;
-    text-decoration: none;
-    padding: 1rem;
-    margin: 2rem 2rem 2rem 0;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border-radius: 4px; /* Rounded corners */
+    white-space: nowrap; /* Prevents text wrapping */
+    display: inline-block; /* Ensures each label is treated as a block */
 }
+
+.labels-view-text {
+    text-decoration: none;
+}
+
 
 .jodit-status-bar{
     visibility: hidden;

@@ -76,7 +76,7 @@ export default function ViewError({ errorFile }) {
         {errorFile.labels.map((label) => {
           return (
             <>
-              <span className="reference-link-view-element">
+              <span className="labels-view-element">
                 {label}
               </span>
             </>
