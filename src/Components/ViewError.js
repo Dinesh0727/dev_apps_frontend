@@ -3,84 +3,83 @@ import "../styles/ViewError.css";
 import Editor from "./Editor";
 
 export default function ViewError({ errorFile }) {
+  console.log(errorFile);
+
   return (
     <div className="viewError">
-      <div>
-        <h2>Error</h2>
+      <h4 className="error-title-heading">Error Title</h4>
+      <div className="error-title-view-content">{errorFile.heading}</div>
+      <h4 className="project-name-heading">Project Name</h4>
+      <div className="project-name-view-content">{errorFile.projectName}</div>
+      <h4 className="problem-description-heading">Problem Description</h4>
+      <div className="problem-description-view-content">
+        {errorFile.problemDescription}
       </div>
-      <div className="error-title-view">{errorFile.heading}</div>
-      <div>
-        <h3>Project</h3>
-      </div>
-      <div className="error-title-view">{errorFile.projectName}</div>
-      <div>
-        <h3>Problem Description</h3>
-      </div>
-      <div className="error-title-view">{errorFile.problemDescription}</div>
-      <div>
-        <h3>Solution Text</h3>
-      </div>
-      <div className="error-title-view">{errorFile.solutionText}</div>
-      {errorFile.codeBlockBeforeFix && (
+      <h4 className="solution-text-heading">Solution Text</h4>
+      <div className="solution-text-view-content">{errorFile.solutionText}</div>
+      {
+        errorFile.codeBlockBeforeFix && 
         <>
-          <div>
-            <h3>Code Before Fix</h3>
-          </div>
-          <div className="beforeFixText">
+          <h4 className="before-code-fix-view-heading">Code Before Fix</h4>
+          <div className="before-code-fix-view-content">
             <Editor
-              readOnly={true}
               value={errorFile.codeBlockBeforeFix}
               toolBarVisibility={false}
+              readOnly={true}
             ></Editor>
           </div>
         </>
-      )}
-      {errorFile.codeBlockAfterFix && (
+      }
+      {
+        errorFile.codeBlockAfterFix && 
         <>
-          <div>
-            <h3>Code After Fix</h3>
-          </div>
-          <div className="beforeFixText">
+          <h4 className="after-code-fix-view-heading">Code After Fix</h4>
+          <div className="after-code-fix-view-content">
             <Editor
-              readOnly={true}
               value={errorFile.codeBlockAfterFix}
               toolBarVisibility={false}
+              readOnly={true}
             ></Editor>
           </div>
         </>
-      )}
-      <div>
-        <h3>Image Link List</h3>
-      </div>
-      {errorFile.imageLinkList.map((item, index) => {
-        return (
-          <div className="image-link-element">
-            <div key={index}>{item.link}</div>
-            <div key={index + 100000}>{item.text}</div>
-          </div>
-        );
-      })}
-      <div>
-        <h3>References</h3>
-      </div>
-      {errorFile.referenceLinks.map((item, index) => {
-        return (
-          <div className="reference-link-element" key={index + 200000}>
-            <a href={item} className="reference-link">
-              {item}
-            </a>
-          </div>
-        );
-      })}
-      <div>
-        <h3>Labels</h3>
-      </div>
-      <div className="error-title-view">
-        {errorFile.labels.map((item, index) => {
+      }
+      <h4 className="image-list-view-heading">Relevant Image List</h4>
+      <div className="image-list-view-content">
+        {errorFile.imageLinkList.map((imageLinkElement) => {
           return (
-            <span key={index + 300000} className="">
-              {item}
-            </span>
+            <>
+              <a href={imageLinkElement.link} className="image-link-view-text">
+                {imageLinkElement.text}
+              </a>
+            </>
+          );
+        })}
+      </div>
+
+      <h4 className="reference-list-view-heading">References List</h4>
+      <div className="reference-list-view-content">
+        {errorFile.referenceLinks.map((link) => {
+          return (
+            <>
+              <div className="reference-link-view-element">
+                <a href={link}>
+                  {link}
+                </a>
+              </div>
+            </>
+          );
+        })}
+      </div>
+
+      <h4 className="labels-view-heading">Labels</h4>
+      <div className="labels-view-content">
+        {errorFile.labels.map((label) => {
+          return (
+            <>
+              <span className="reference-link-view-element">
+                {label}
+              </span>
+            </>
           );
         })}
       </div>

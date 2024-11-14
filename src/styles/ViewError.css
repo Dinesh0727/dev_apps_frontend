@@ -1,49 +1,136 @@
-.error-title-view{
+.viewError{
     width: 100%;
-    padding: 1rem;
-    border: 1px solid grey;
-    border-radius: 1rem;
-    background-color: lightgrey;
-    margin: 0 0 0.5rem 2rem;
+    margin: 0 0 0 0;
+    overflow-x: auto;
 }
 
-.beforeFixText{
-    background-color: lightgrey;
-    margin: 1rem 1rem 1rem 2rem;
+.error-title-heading{
+    margin: 2rem 0 1rem 3rem;
+}
+
+.error-title-view-content{
+    width: 80%;
     padding: 1rem;
+    margin: 2rem 0 1rem 3rem;
+    border: 1px solid grey;
+    background-color: lightgrey;
+}
+
+.project-name-heading{
+    margin: 2rem 0 1rem 3rem;
+}
+
+.project-name-view-content{
+    width: 80%;
+    padding: 1rem;
+    margin: 2rem 0 1rem 3rem;
+    border: 1px solid grey;
+    background-color: lightgrey;
+}
+
+.problem-description-heading{
+    margin: 2rem 0 1rem 3rem;
+}
+
+.problem-description-view-content{
+    width: 80%;
+    padding: 1rem;
+    margin: 2rem 0 1rem 3rem;
+    border: 1px solid grey;
+    background-color: lightgrey;
+}
+
+.solution-text-heading{
+    margin: 2rem 0 1rem 3rem;
+}
+
+.solution-text-view-content{
+    width: 80%;
+    padding: 1rem;
+    margin: 2rem 0 1rem 3rem;
+    border: 1px solid grey;
+    background-color: lightgrey;
+}
+
+.before-code-fix-view-heading{
+    margin: 2rem 0 1rem 3rem;
+}
+
+.before-code-fix-view-content{
+    width: 80%;
+    background-color: lightgrey;
+    padding: 1rem;
+    margin: 2rem 0 1rem 3rem;
+}
+
+.after-code-fix-view-heading{
+    margin: 2rem 0 1rem 3rem;
+}
+
+.after-code-fix-view-content{
+    width: 80%;
+    background-color: lightgrey;
+    padding: 1rem;
+    margin: 2rem 0 1rem 3rem;
+}
+
+.image-list-view-heading{
+    margin: 2rem 0 1rem 3rem;
+}
+
+.image-list-view-content{
+    width: 80%;
+    background-color: lightgrey;
+    padding: 2rem;
+    margin: 2rem 0 1rem 3rem;
+}
+
+.image-link-view-text{
+    background-color: gold;
+    color: black;
+    text-decoration: none;
+    padding: 1rem;
+    margin: 2rem 2rem 2rem 0;
+}
+
+.reference-list-view-heading{
+    margin: 2rem 0 1rem 3rem;
+}
+
+.reference-list-view-content{
+    width: 80%;
+    background-color: lightgrey;
+    color: black;
+    text-decoration: none;
+    padding: 1rem;
+    margin: 1rem 0 2rem 3rem;
+}
+
+.reference-link-view-element{
+    background-color: gold;
+    padding: 1rem;
+    margin: 1rem 2rem 1rem 0;
+}
+
+.labels-view-heading{
+    margin: 2rem 0 1rem 3rem;
+}
+
+.labels-view-content{
+    width: 80%;
+    background-color: lightgrey;
+    padding: 2rem;
+    margin: 2rem 0 1rem 3rem;
+}
+
+.labels-view-text{
+    background-color: gold;
+    color: black;
+    text-decoration: none;
+    padding: 1rem;
+    margin: 2rem 2rem 2rem 0;
 }
 
 .jodit-status-bar{
-    visibility: hiddene;
-}
-
-h2{
-    margin: 1rem 1rem 1rem 2rem;
-}
-
-h3{
-    margin: 1rem 1rem 1rem 2rem;
-}
-
-.image-link-element{
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid grey;
-    border-radius: 1rem;
-    background-color: lightgrey;
-    margin: 0.5rem 0 0.5rem 2rem;
-}
-
-.reference-link-element{
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid grey;
-    border-radius: 1rem;
-    background-color: lightgrey;
-    margin: 0.5rem 0 0.5rem 2rem;
-}
-
-.reference-link{
-    text-decoration: none;
-    color: black;
+    visibility: hidden;
 }

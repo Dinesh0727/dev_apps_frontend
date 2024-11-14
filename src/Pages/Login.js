@@ -1,28 +1,44 @@
+import React, { useEffect } from "react";
 import { GoogleLogin } from "@react-oauth/google";
-import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import {
+  Box,
+  Button,
+  Center,
+  Heading,
+  VStack,
+  Text,
+  useToast,
+  Image,
+} from "@chakra-ui/react";
+import "../styles/Login.css";
 
 export default function Login({ setIsLogged }) {
   const navigate = useNavigate();
+  const toast = useToast();
 
   const login = async (credentialResponse) => {
-    var res;
     try {
-      res = await axios.post(
+      const res = await axios.post(
         "http://localhost:8080/api/tokens",
         credentialResponse
       );
+      if (res.status === 200) {
+        setIsLogged(true);
+        localStorage.setItem("isLogged", "true");
+        navigate("/"); // Redirect to homepage
+      } else {
+        navigate("/");
+      }
     } catch (error) {
-      console.log("Error occurred while logging in through Google");
-    }
-
-    if (res.status != 200) {
-      navigate("/");
-    } else {
-      setIsLogged(true);
-      navigate("/");
+      toast({
+        title: "Login failed",
+        description: "Error occurred while logging in through Google",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
@@ -31,21 +47,51 @@ export default function Login({ setIsLogged }) {
     if (flag === "true") {
       navigate("/errorVault");
     }
-  }, []);
+  }, [navigate]);
 
   return (
-    <div>
-      <h1>Welcome to Sign in Page</h1>
-      <GoogleLogin
-        onSuccess={(credentialResponse) => {
-          login(credentialResponse);
-        }}
-        onError={() => {
-          console.log("Login Failed");
-        }}
+    <Center h="100vh" bg="gray.100" className="login-container">
+      <Box
+        bg="white"
+        p={8}
+        rounded="xl"
+        boxShadow="lg"
+        textAlign="center"
+        maxW="md"
+        className="login-container-box"
       >
-        <button>Google Login</button>
-      </GoogleLogin>
-    </div>
+        <VStack spacing={4}>
+          <Image
+            src="https://th.bing.com/th?id=OIP.ZTITedEnP2qvlUs8Om0CxwHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.4&pid=3.1&rm=2" // Replace with actual image URL
+            alt="Login Icon"
+            boxSize="100px"
+            mb={4}
+            borderRadius="full"
+          />
+          <Heading color="teal.500">Welcome to the Sign In Page</Heading>
+          <Text fontSize="md" color="gray.600">
+            Sign in with Google to continue
+          </Text>
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              login(credentialResponse);
+            }}
+            onError={() => {
+              toast({
+                title: "Login failed",
+                description: "Google login was unsuccessful",
+                status: "error",
+                duration: 3000,
+                isClosable: true,
+              });
+            }}
+          >
+            <Button colorScheme="blue" variant="solid">
+              Google Login
+            </Button>
+          </GoogleLogin>
+        </VStack>
+      </Box>
+    </Center>
   );
 }
