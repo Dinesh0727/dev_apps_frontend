@@ -24,7 +24,10 @@ export default function Login({ setIsLogged }) {
         "http://localhost:8080/api/tokens",
         credentialResponse
       );
+
       if (res.status === 200) {
+        const responseBody = res.data;
+        console.log("API Response after hitting http://localhost:8080/api/tokens " +  + responseBody);
         setIsLogged(true);
         localStorage.setItem("isLogged", "true");
         navigate("/"); // Redirect to homepage
@@ -44,7 +47,7 @@ export default function Login({ setIsLogged }) {
 
   useEffect(() => {
     const flag = localStorage.getItem("isLogged");
-    if (flag === "true") {
+    if (flag === true) {
       navigate("/errorVault");
     }
   }, [navigate]);
@@ -62,7 +65,7 @@ export default function Login({ setIsLogged }) {
       >
         <VStack spacing={4}>
           <Image
-            src="https://th.bing.com/th?id=OIP.ZTITedEnP2qvlUs8Om0CxwHaEo&w=316&h=197&c=8&rs=1&qlt=90&o=6&dpr=1.4&pid=3.1&rm=2" // Replace with actual image URL
+            src="https://via.placeholder.com/100" // Replace with actual image URL
             alt="Login Icon"
             boxSize="100px"
             mb={4}

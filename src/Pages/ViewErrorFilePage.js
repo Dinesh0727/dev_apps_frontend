@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/AddErrorFilePage.css";
 import SideNav from "../Components/SideNav";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ViewError from "../Components/ViewError";
 
@@ -12,6 +12,8 @@ export default function ViewErrorFilePage() {
   const index = location.state;
   const [errorFile, setErrorFile] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   console.log(index);
 
@@ -27,6 +29,10 @@ export default function ViewErrorFilePage() {
     }
   };
 
+  const moveToEditErrorFile = () => {
+    navigate("/editErrorPage", {state : errorFile})
+  }
+
   useEffect(() => {
     apiCallToFetchErrorFile();
   }, []);
@@ -40,7 +46,7 @@ export default function ViewErrorFilePage() {
       <div className="Navbar">
         <div className="logo">Error File Logo</div>
         <div>
-          <button type="button" className="btn btn-primary">
+          <button type="button" className="btn btn-primary" onClick={() => moveToEditErrorFile(index)}>
             Edit ErrorFile
           </button>
         </div>

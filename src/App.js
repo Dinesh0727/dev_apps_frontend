@@ -31,6 +31,7 @@ export function App() {
                
             </Route>
             <Route exact path="/newErrorPage" element={<AddErrorFilePage/>}></Route>
+            <Route exact path="/editErrorPage" element={<AddErrorFilePage/>}></Route>
           </Routes>
         </Router>
       </div>

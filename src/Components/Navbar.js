@@ -1,97 +1,74 @@
-import React, { useEffect } from "react";
-import { GoogleLogin } from "@react-oauth/google";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import {
-  Box,
-  Button,
-  Center,
-  Heading,
-  VStack,
-  Text,
-  useToast,
-  Image,
-} from "@chakra-ui/react";
-import "../styles/Login.css";
+import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Login({ setIsLogged }) {
-  const navigate = useNavigate();
-  const toast = useToast();
-
-  const login = async (credentialResponse) => {
-    try {
-      const res = await axios.post(
-        "http://localhost:8080/api/tokens",
-        credentialResponse
-      );
-      if (res.status === 200) {
-        setIsLogged(true);
-        localStorage.setItem("isLogged", "true");
-        navigate("/"); // Redirect to homepage
-      } else {
-        navigate("/");
-      }
-    } catch (error) {
-      toast({
-        title: "Login failed",
-        description: "Error occurred while logging in through Google",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
-    }
-  };
-
-  useEffect(() => {
-    const flag = localStorage.getItem("isLogged");
-    if (flag === "true") {
-      navigate("/errorVault");
-    }
-  }, [navigate]);
-
+export default function Navbar({ isLogged }) {
   return (
-    <Center h="100vh" bg="gray.100" className="login-container">
-      <Box
-        bg="white"
-        p={8}
-        rounded="xl"
-        boxShadow="lg"
-        textAlign="center"
-        maxW="md"
-        className="login-container-box"
-      >
-        <VStack spacing={4}>
-          <Image
-            src="https://via.placeholder.com/100" // Replace with actual image URL
-            alt="Login Icon"
-            boxSize="100px"
-            mb={4}
-            borderRadius="full"
-          />
-          <Heading color="teal.500">Welcome to the Sign In Page</Heading>
-          <Text fontSize="md" color="gray.600">
-            Sign in with Google to continue
-          </Text>
-          <GoogleLogin
-            onSuccess={(credentialResponse) => {
-              login(credentialResponse);
-            }}
-            onError={() => {
-              toast({
-                title: "Login failed",
-                description: "Google login was unsuccessful",
-                status: "error",
-                duration: 3000,
-                isClosable: true,
-              });
-            }}
+    <div>
+      <nav className="navbar navbar-expand-lg bg-black">
+        <div className="container-fluid">
+          <a className="navbar-brand text-white" href="#">
+            Dev Apps
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-            <Button colorScheme="blue" variant="solid">
-              Google Login
-            </Button>
-          </GoogleLogin>
-        </VStack>
-      </Box>
-    </Center>
+            <span className="navbar-toggler-icon text-white"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a
+                  className="nav-link active text-white"
+                  aria-current="page"
+                  href="#"
+                >
+                  Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link text-white"
+                  href="#errorVault"
+                  to={isLogged ? "/errorVault" : "/"}
+                >
+                  ErrorVault
+                </Link>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link text-white" href="#devNotes">
+                  DevNotes
+                </a>
+              </li>
+            </ul>
+            <form className="d-flex" role="search">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button className="btn btn-info mx-2" type="submit">
+                Search
+              </button>
+              {
+                !isLogged && <Link
+                className="btn btn-black text-white"
+                type="submit"
+                to={"/login"}
+              >
+                Login
+              </Link>
+              }
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
   );
 }
