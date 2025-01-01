@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { GoogleLogin } from "@react-oauth/google";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -13,6 +12,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import "../styles/Login.css";
+import apiClient from "../clients/apiClient";
 
 export default function Login({ setIsLogged }) {
   const navigate = useNavigate();
@@ -20,17 +20,19 @@ export default function Login({ setIsLogged }) {
 
   const login = async (credentialResponse) => {
     try {
-      const res = await axios.post(
+      const res = await apiClient.post(
         "http://localhost:8080/api/tokens",
         credentialResponse
       );
 
+      console.log("Response for api/tokens hit ", res.data);
+      
+
       if (res.status === 200) {
         const responseBody = res.data;
-        console.log("API Response after hitting http://localhost:8080/api/tokens " +  + responseBody);
+        console.log("API Response after hitting http://localhost:8080/api/tokens ", responseBody);
         setIsLogged(true);
-        localStorage.setItem("isLogged", "true");
-        navigate("/"); // Redirect to homepage
+        navigate("/");
       } else {
         navigate("/");
       }

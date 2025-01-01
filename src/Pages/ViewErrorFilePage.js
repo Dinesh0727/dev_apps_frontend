@@ -4,6 +4,7 @@ import SideNav from "../Components/SideNav";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ViewError from "../Components/ViewError";
+import apiClient from "../clients/apiClient";
 
 // Create a drop down to download the error file and other options
 
@@ -19,7 +20,9 @@ export default function ViewErrorFilePage() {
 
   const apiCallToFetchErrorFile = async () => {
     try {
-      const temp = await axios.get("http://localhost:8080/errors/" + index);
+      const temp = await apiClient.get("http://localhost:8080/errors/" + index, {
+        withCredentials: true
+      });
       setErrorFile(temp.data);
       console.log(temp.data);
     } catch (err) {

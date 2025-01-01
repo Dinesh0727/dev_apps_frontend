@@ -4,6 +4,7 @@ import SideNav from "../Components/SideNav";
 import ErrorBody from "../Components/ErrorBody";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import apiClient from "../clients/apiClient";
 
 export default function EditErrorFilePage() {
   
@@ -28,7 +29,7 @@ export default function EditErrorFilePage() {
     console.log("Sending data:", errorFileData);  // Log the data being sent
   
     try {
-      const response = await axios.post(
+      const response = await apiClient.post(
         "http://localhost:8080/errors/createErrorFile",
         errorFileData,
         { headers: { "Content-Type": "application/json" } }

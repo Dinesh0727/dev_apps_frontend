@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ErrorVaultPage from "./Pages/ErrorVaultPage";
 import Login from "./Pages/Login";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AddErrorFilePage from "./Pages/AddErrorFilePage";
 import ViewErrorFilePage from "./Pages/ViewErrorFilePage";
 
@@ -20,18 +20,18 @@ export function App() {
       <div>
         <Router>
           <Routes>
-            <Route exact path="/login" element={<Login setIsLogged={setIsLogged}/>}></Route>
+            <Route exact path="/login" element={<Login setIsLogged={setIsLogged} isLogged={isLogged}/>}></Route>
             <Route exact path="/" element={<CommonHome isLogged={isLogged}/>}></Route>
             <Route
               exact
               path="/errorVault"
               element={<ErrorVaultPage isLogged={isLogged}/>}
             ></Route>
-            <Route exact path="/viewErrorFile" element={<ViewErrorFilePage></ViewErrorFilePage>}>
+            <Route exact path="/viewErrorFile" element={<ViewErrorFilePage isLogged={isLogged}></ViewErrorFilePage>}>
                
             </Route>
-            <Route exact path="/newErrorPage" element={<AddErrorFilePage/>}></Route>
-            <Route exact path="/editErrorPage" element={<AddErrorFilePage/>}></Route>
+            <Route exact path="/newErrorPage" element={<AddErrorFilePage isLogged={isLogged}/>}></Route>
+            <Route exact path="/editErrorPage" element={<AddErrorFilePage isLogged={isLogged}/>}></Route>
           </Routes>
         </Router>
       </div>

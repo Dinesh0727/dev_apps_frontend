@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState, useRef } from "react";
 import CardContainerSearchBar from "./CardContainerSearchBar";
 import CardLocal from "./CardLocal";
-import { Button } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import apiClient from "../clients/apiClient";
 
 export default function CardContainer({ collapsed }) {
   const [errorFileList, setErrorFileList] = useState([]);
+  
+  const requestMade = useRef(false);
   // console.log("Error Files List " + errorFileList.length);
 
   window.addEventListener("resize", () => {
@@ -22,17 +23,26 @@ export default function CardContainer({ collapsed }) {
     }, 500);
   });
 
-  const fetchErrorFiles = async () => {
-    console.log("Inside the fetchErrorFiles");
-    const temp = await axios.get("http://localhost:8080/errors/");
-    console.log(temp);
+const fetchErrorFiles = async () => {
+  if (!requestMade.current) {
+    requestMade.current = true; // Mark the request as made
+    try {
+      const temp = await apiClient.get("http://localhost:8080/errors", {
+        withCredentials: true,
+      });
+      if (temp && temp.data) {
+        setErrorFileList(temp.data);
+      }
+    } catch (error) {
+      console.error("Error fetching error files:", error);
+    }
+  }
+};
 
-    setErrorFileList(temp.data);
-  };
+useEffect(() => {
+  fetchErrorFiles();
+}, []);
 
-  useEffect(() => {
-    fetchErrorFiles();
-  }, []);
 
   const navigate = useNavigate();
 
