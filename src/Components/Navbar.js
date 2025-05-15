@@ -1,14 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
-export default function Navbar({ isLogged }) {
+export default function Navbar({ isAuthenticated }) {
+  const { logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-black">
         <div className="container-fluid">
-          <a className="navbar-brand text-white" href="#">
+          <Link className="navbar-brand text-white" to="/">
             Dev Apps
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -23,27 +30,26 @@ export default function Navbar({ isLogged }) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link active text-white"
                   aria-current="page"
-                  href="#"
+                  to="/"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <Link
                   className="nav-link text-white"
-                  href="#errorVault"
-                  to={isLogged ? "/errorVault" : "/"}
+                  to={isAuthenticated ? "/errorVault" : "/"}
                 >
                   ErrorVault
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-white" href="#devNotes">
+                <Link className="nav-link text-white" to="/">
                   DevNotes
-                </a>
+                </Link>
               </li>
             </ul>
             <form className="d-flex" role="search">
@@ -56,15 +62,21 @@ export default function Navbar({ isLogged }) {
               <button className="btn btn-info mx-2" type="submit">
                 Search
               </button>
-              {
-                !isLogged && <Link
-                className="btn btn-black text-white"
-                type="submit"
-                to={"/login"}
-              >
-                Login
-              </Link>
-              }
+              {!isAuthenticated ? (
+                <Link
+                  className="btn btn-black text-white"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              ) : (
+                <button
+                  className="btn btn-danger text-white"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              )}
             </form>
           </div>
         </div>

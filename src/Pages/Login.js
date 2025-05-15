@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useAuth } from '../context/AuthContext';
 import { GoogleLogin } from "@react-oauth/google";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
-  Button,
   Center,
   Heading,
   VStack,
@@ -14,26 +14,21 @@ import {
 import "../styles/Login.css";
 import apiClient from "../clients/apiClient";
 
-export default function Login({ setIsLogged }) {
+export default function Login() {
   const navigate = useNavigate();
   const toast = useToast();
+  const { login } = useAuth();
 
-  const login = async (credentialResponse) => {
+  const handleLogin = async (credentialResponse) => {
     try {
       const res = await apiClient.post(
         "http://localhost:8080/api/tokens",
-        credentialResponse
+        credentialResponse,
+        { withCredentials: true } // Important for cookies
       );
 
-      console.log("Response for api/tokens hit ", res.data);
-      
-
       if (res.status === 200) {
-        const responseBody = res.data;
-        console.log("API Response after hitting http://localhost:8080/api/tokens ", responseBody);
-        setIsLogged(true);
-        navigate("/");
-      } else {
+        login();
         navigate("/");
       }
     } catch (error) {
@@ -46,13 +41,6 @@ export default function Login({ setIsLogged }) {
       });
     }
   };
-
-  useEffect(() => {
-    const flag = localStorage.getItem("isLogged");
-    if (flag === true) {
-      navigate("/errorVault");
-    }
-  }, [navigate]);
 
   return (
     <Center h="100vh" bg="gray.100" className="login-container">
@@ -78,9 +66,7 @@ export default function Login({ setIsLogged }) {
             Sign in with Google to continue
           </Text>
           <GoogleLogin
-            onSuccess={(credentialResponse) => {
-              login(credentialResponse);
-            }}
+            onSuccess={handleLogin}
             onError={() => {
               toast({
                 title: "Login failed",
@@ -90,11 +76,7 @@ export default function Login({ setIsLogged }) {
                 isClosable: true,
               });
             }}
-          >
-            <Button colorScheme="blue" variant="solid">
-              Google Login
-            </Button>
-          </GoogleLogin>
+          />
         </VStack>
       </Box>
     </Center>

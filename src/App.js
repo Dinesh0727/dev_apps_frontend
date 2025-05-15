@@ -5,36 +5,57 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ErrorVaultPage from "./Pages/ErrorVaultPage";
 import Login from "./Pages/Login";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { useState } from "react";
 import AddErrorFilePage from "./Pages/AddErrorFilePage";
 import ViewErrorFilePage from "./Pages/ViewErrorFilePage";
+import { AuthProvider } from "./context/AuthContext";
+import { PrivateRoute } from "./Components/PrivateRoute";
 
 export function App() {
   const clientId =
     "1072322961106-ebo704uhn53cqmfrs8lannqlgueoneqe.apps.googleusercontent.com";
 
-    const [isLogged, setIsLogged] = useState(false);
-
   return (
     <GoogleOAuthProvider clientId={clientId}>
-      <div>
-        <Router>
+      <Router>
+        <AuthProvider>
           <Routes>
-            <Route exact path="/login" element={<Login setIsLogged={setIsLogged} isLogged={isLogged}/>}></Route>
-            <Route exact path="/" element={<CommonHome isLogged={isLogged}/>}></Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<CommonHome />} />
             <Route
-              exact
               path="/errorVault"
-              element={<ErrorVaultPage isLogged={isLogged}/>}
-            ></Route>
-            <Route exact path="/viewErrorFile" element={<ViewErrorFilePage isLogged={isLogged}></ViewErrorFilePage>}>
-               
-            </Route>
-            <Route exact path="/newErrorPage" element={<AddErrorFilePage isLogged={isLogged}/>}></Route>
-            <Route exact path="/editErrorPage" element={<AddErrorFilePage isLogged={isLogged}/>}></Route>
+              element={
+                <PrivateRoute>
+                  <ErrorVaultPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/viewErrorFile"
+              element={
+                <PrivateRoute>
+                  <ViewErrorFilePage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/newErrorPage"
+              element={
+                <PrivateRoute>
+                  <AddErrorFilePage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/editErrorPage"
+              element={
+                <PrivateRoute>
+                  <AddErrorFilePage />
+                </PrivateRoute>
+              }
+            />
           </Routes>
-        </Router>
-      </div>
+        </AuthProvider>
+      </Router>
     </GoogleOAuthProvider>
   );
 }

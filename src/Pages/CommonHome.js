@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "../Components/Navbar";
 import DevApp from "../Components/DevApp";
 import Footer from "../Components/Footer";
+import { useAuth } from "../context/AuthContext";
 
-export default function CommonHome({ isLogged }) {
+export default function CommonHome() {
+  const { isAuthenticated } = useAuth();
+  
   return (
     <div>
-      <Navbar isLogged={isLogged}/>
+      <Navbar isAuthenticated={isAuthenticated} />
       <DevApp />
       <div className="my-0"></div>
       <Footer />

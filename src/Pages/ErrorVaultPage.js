@@ -7,7 +7,7 @@ import CardContainer from "../Components/CardContainer";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-export default function ErrorVaultPage({isLogged}) {
+export default function ErrorVaultPage() {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
 
@@ -15,13 +15,6 @@ export default function ErrorVaultPage({isLogged}) {
     setCollapsed(!collapsed);
   };
 
-  
-
-  useEffect(() => {
-    if(!isLogged){
-      navigate("/");
-    }
-  },[]);
 
   return (
     <div>
